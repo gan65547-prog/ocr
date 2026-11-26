@@ -1,6 +1,6 @@
 # RK3588 OCR 与 Whisper 部署记录及 SOP
 
-整理时间：2026-11-26。设备：gan@192.168.1.108，aarch64。代码仓库： https://github.com/gan65547-prog/ocr 。本文仅保存在本地，不提交到仓库。
+整理时间：2026-11-26。设备：gan@192.168.1.108，aarch64。代码仓库： https://github.com/gan65547-prog/ocr 。本文已提交到代码仓库。
 
 ## 现有资产与边界
 
@@ -52,7 +52,7 @@ python3 test_ocr_board.py test_cn_en.png
 
 脚本使用 `ppocrv4_det_960.rknn`、`ppocrv4_rec_320.rknn` 和 `ppocr_keys_v1.txt`，输出检测框数量、耗时和识别文字。其检测后处理为简化实现，应使用标注样本检查结果，不能视作官方完整 PP-OCR 流程。
 
-2026-11-26 使用系统 Python 复测时，`import cv2` 失败：`libavcodec.so.60: undefined symbol: x264_encoder_open_164`，因此本次未完成 OCR 推理，也没有可核实的 OCR 精度或耗时。应先检查 OpenCV、FFmpeg、libx264 的动态库来源及版本，在独立环境修复依赖后重试，避免直接覆盖系统库。方向分类模型虽然存在，但当前脚本未使用。
+2026-11-26 使用系统 Python 复测时，`import cv2` 失败：`libavcodec.so.60: undefined symbol: x264_encoder_open_164`，该次运行未完成 OCR 推理；之后使用现有隔离环境成功运行，结果见第 6.2 节。应先检查 OpenCV、FFmpeg、libx264 的动态库来源及版本，在独立环境修复依赖后重试，避免直接覆盖系统库。方向分类模型虽然存在，但当前脚本未使用。
 
 ## 5. 交付检查
 
