@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+*.rknn
+*.onnx
+*.wav
+*.log
+.venv/
+venv/
